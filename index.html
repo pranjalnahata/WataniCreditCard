@@ -1,0 +1,1092 @@
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+  <title>Watani Credit Card</title>
+  <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/dist/mindar-image.prod.js"></script>
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+  <script src="./dist/aframe-gif-shader.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.5/dist/mindar-image-aframe.prod.js"></script> -->
+
+  <style>
+    body {
+      margin: 0;
+    }
+
+    .container1 img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: top;
+      z-index: 99999;
+    }
+
+    #splashScreenLogo {
+      transform: translate(-50%, -50%);
+      position: absolute;
+      top: 8%;
+      left: 20%;
+      width: 30%;
+      height: auto;
+      visibility: visible;
+      z-index: 99999;
+    }
+    #splashScreenCard {
+      transform: translate(-50%, -50%);
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      width: 80%;
+      height: auto;
+      visibility: visible;
+      z-index: 99999;
+    }
+    #Language1 {
+      transform: translate(-50%, -50%);
+      position: absolute;
+      top: 73%;
+      left: 75%;
+      width: auto;
+      height: 9%;
+      visibility: visible;
+      z-index: 99999;
+    }
+    .LangAppear1 {
+      animation: LAppear1 1s ease-out 1;
+    }
+    @keyframes LAppear1 {
+      0% {
+        top: 80%
+      }
+      100% {
+        top: 73%
+      }
+    }
+    #Language2 {
+      transform: translate(-50%, -50%);
+      position: absolute;
+      top: 80%;
+      left: 58%;
+      width: auto;
+      height: 5%;
+      visibility: hidden;
+      z-index: 999999;
+    }
+    .LangAppear2 {
+      animation: LAppear2 1s ease-out 1;
+    }
+    @keyframes LAppear2 {
+      0% {
+        top: 87%
+      }
+      100% {
+        top: 80%
+      }
+    }
+    #Language3 {
+      transform: translate(-50%, -50%);
+      position: absolute;
+      top: 87%;
+      left: 58%;
+      width: auto;
+      height: 5%;
+      visibility: hidden;
+      z-index: 999999;
+    }
+    .LangAppear3 {
+      animation: LAppear3 1s ease-out 1;
+    }
+    @keyframes LAppear3 {
+      0% {
+        top: 94%
+      }
+      100% {
+        top: 87%
+      }
+    }
+
+    .example-container {
+      overflow: hidden;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    #example-scanning-overlay {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: transparent;
+      z-index: 2;
+    }
+
+    @media (min-aspect-ratio: 1/1) {
+      #example-scanning-overlay .inner {
+        width: 50vh;
+        height: 50vh;
+      }
+    }
+
+    @media (max-aspect-ratio: 1/1) {
+      #example-scanning-overlay .inner {
+        width: 80vw;
+        height: 80vw;
+      }
+    }
+
+    #example-scanning-overlay .inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      opacity: 0.75;
+
+      background:
+        linear-gradient(to right, white 10px, transparent 10px) 0 0,
+        linear-gradient(to right, white 10px, transparent 10px) 0 100%,
+        linear-gradient(to left, white 10px, transparent 10px) 100% 0,
+        linear-gradient(to left, white 10px, transparent 10px) 100% 100%,
+        linear-gradient(to bottom, white 10px, transparent 10px) 0 0,
+        linear-gradient(to bottom, white 10px, transparent 10px) 100% 0,
+        linear-gradient(to top, white 10px, transparent 10px) 0 100%,
+        linear-gradient(to top, white 10px, transparent 10px) 100% 100%;
+      background-repeat: no-repeat;
+      background-size: 40px 40px;
+    }
+
+    #example-scanning-overlay.hidden {
+      display: none;
+    }
+
+    #example-scanning-overlay img {
+      width: 90%;
+      align-self: center;
+    }
+
+    #example-scanning-overlay h3 {
+      display: block;
+      position: absolute;
+      font-size: medium;
+      top: 105%;
+      align-self: center;
+      color: white;
+    }
+
+    #example-scanning-overlay .inner .scanline {
+      position: absolute;
+      width: 100%;
+      height: 10px;
+      /* opacity: 0.75; */
+      background: white;
+      animation: move 3s linear infinite;
+    }
+
+    @keyframes move {
+
+      0%,
+      100% {
+        top: 0%
+      }
+
+      50% {
+        top: calc(100% - 10px)
+      }
+    }
+
+    #logo {
+      transform: translate(-50%, -50%);
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      width: auto;
+      height: 70px;
+      visibility: hidden;
+      z-index: 99999;
+    }
+
+    #Text1 {
+      transform: translate(-50%, -50%);
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      width: 65%;
+      height: auto;
+      visibility: hidden;
+      z-index: 99999;
+    }
+
+    #Text2 {
+      transform: translate(-50%, -50%);
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      width: 45%;
+      height: auto;
+      visibility: hidden;
+      z-index: 99999;
+    }
+
+    #informationIcon {
+      transform: translate(-50%, -50%);
+      position: absolute;
+      top: 10%;
+      left: 78%;
+      width: auto;
+      height: 40px;
+      visibility: hidden;
+      z-index: 99999;
+    }
+    .infoAppear {
+      animation: infoAppear1 1s ease-out 1;
+    }
+    @keyframes infoAppear1 {
+      0% {
+        left: 85%;
+      }
+      100% {
+        left: 78%;
+      }
+    }
+
+    #reloadIcon {
+      transform: translate(-50%, -50%);
+      position: absolute;
+      top: 10%;
+      left: 90%;
+      width: auto;
+      height: 42px;
+      visibility: hidden;
+      z-index: 99999;
+    }
+    .reloadAppear {
+      animation: reloadAppear1 1s ease-out 1;
+    }
+    @keyframes reloadAppear1 {
+      0% {
+        left: 97%;
+      }
+      100% {
+        left: 90%;
+      }
+    }
+
+    #activateCardIcon1 {
+      transform: translate(-50%, -50%);
+      position: absolute;
+      top: 90%;
+      left: 45%;
+      width: 70%;
+      height: auto;
+      visibility: hidden;
+      z-index: 99999;
+    }
+    .animationAppear1 {
+      animation: appear1 1s ease-out 1;
+    }
+    @keyframes appear1 {
+      0% {
+        top: 97%
+      }
+      100% {
+        top: 90%
+      }
+    }
+    #activateCardIcon1:hover {
+      src: url("assets/ActivateYourCardSelectedIcon.png");
+    }
+
+    #checkYourBenefitsIcon {
+      transform: translate(-50%, -50%);
+      position: absolute;
+      top: 82%;
+      left: 45%;
+      width: 70%;
+      height: auto;
+      visibility: hidden;
+      z-index: 99999;
+    }
+    .animationAppear2 {
+      animation: appear2 1s ease-out 1;
+    }
+    @keyframes appear2 {
+      0% {
+        top: 89%
+      }
+      100% {
+        top: 82%
+      }
+    }
+
+    .endScreenBtns {
+      display: flex;
+      justify-content: space-around;
+      position: absolute;
+      top: 89%;
+      width: 96%;
+      height: auto;
+      padding-left: 2%;
+      padding-right: 2%;
+      visibility: hidden;
+      z-index: 99999;
+    }
+    #activateYourCardIcon {
+      visibility: hidden;
+      width: 50%;
+      height: auto;
+      z-index: 99999;
+    }
+    #applyNowIcon {
+      visibility: hidden;
+      width: 35%;
+      height: auto;
+      z-index: 99999;
+    }
+
+
+    #benefitsIcon {
+      transform: translate(-50%, -50%);
+      position: absolute;
+      top: 10%;
+      left: 30%;
+      width: 40%;
+      height: auto;
+      visibility: hidden;
+      z-index: 99999;
+    }
+    .benefitsAppear {
+      animation: benefitsAppear1 1s ease-out 1;
+    }
+    @keyframes benefitsAppear1 {
+      0% {
+        top: 15%
+      }
+      100% {
+        top: 10%
+      }
+    }
+
+    #cameraNotPermitted {
+      transform: translate(-50%, -50%);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: auto;
+      height: 45%;
+      visibility: hidden;
+      z-index: 99999;
+    }
+
+    #privacyPolicy {
+      transform: translate(-50%, -50%);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: auto;
+      height: 45%;
+      visibility: hidden;
+      z-index: 99999;
+    }
+  </style>
+</head>
+
+<body onload="pageLoaded()">
+  <div class="example-container">
+    <div id="example-scanning-overlay" class="hidden">
+      <div class="inner">
+        <h3 id="scanText">Scan your Watani card to get started</h3>
+        <img src="./assets/CreditCard.png" />
+        <div class="scanline"></div>
+      </div>
+    </div>
+    
+    <div class="container1">
+      <img id="SplashScreenBG" src="./assets/SplashScreenBG.png">
+    </div>
+    <img id="splashScreenLogo" src="./assets/LogoWhite.png" />
+    <img id="splashScreenCard" src="./assets/SplashScreenCard.png" />
+    <img id="Language1" src="./assets/Language1.png" />
+    <img id="Language2" src="./assets/Language2.png" onclick="startAR()"/>
+    <img id="Language3" src="./assets/Language3.png" onclick="startAR()"/>
+
+    <img id="logo" src="./assets/RAKIslamic-Logo.png" />
+    <img id="cameraNotPermitted" src="./assets/CameraNotPermitted.png" />
+
+    <audio id="BgAudio">
+      <source src="./assets/BG.mp3" type="audio/mp3">
+    </audio>
+            
+    <img id="Text1" src="./assets/WataniCreditCardText.png">
+    <img id="Text2" src="./assets/PerfectlyEmirati.png">
+
+    <img id="informationIcon" src="./assets/InfoIcon1.png" onclick="informationCard()"/>
+    <img id="reloadIcon" src="./assets/ReloadIcon1.png" onclick="refreshPage()"/>
+
+    <img id="checkYourBenefitsIcon" src="./assets/CheckOutBenefitsIcon.png" onclick="checkYourBenefitsIcon()"/>
+    <img id="activateCardIcon1" src="./assets/ActivateYourCardIcon.png" onclick="activateCardIcon1()"/>
+
+    <div class="endScreenBtns">
+      <img id="activateYourCardIcon" src="./assets/ActivateYourCardIcon.png" onclick="activateCardIcon1()"/>
+      <img id="applyNowIcon" src="./assets/ApplyNowBtn.png" onclick="activateCardIcon1()"/>
+    </div>
+
+    <img id="benefitsIcon" src="./assets/BenefitsIcon1.png" />
+    <img id="privacyPolicy" src="./assets/PrivacyPolicy.png" onclick="hideInformationCard()"/>
+
+    <a-scene
+      mindar-image="imageTargetSrc: ./assets/CC.mind; autoStart: false; filterMinCF:0.0001; filterBeta: 0.001; showStats: false; uiScanning: #example-scanning-overlay;"
+      loading-screen="dotsColor: red; backgroundColor: black; enabled: false" gesture-detector color-space="sRGB"
+      renderer="colorManagement: true, physicallyCorrectLights, logarithmicDepthBuffer: true" xr-mode-ui="enabled: false"
+      device-orientation-permission-ui="enabled: false">
+      <a-assets>
+        <img id="ccimageBlack" src="./assets/BgCardBlack1.png">
+        <img id="ccimageGradient" src="./assets/BgCardGradient.png">
+        <img id="ccimageNameChip" src="./assets/BgCardNameChip1.png">
+        <img id="cardGraphic" src="./assets/CardGraphic1.png">
+        <img id="bgimage" src="./assets/BgGradient.png">
+
+        <img id="B0" src="./assets/DottedLines.png">
+        <img id="B1" src="./assets/B1Icon.png">
+        <img id="B2" src="./assets/B2Icon.png">
+        <img id="B3" src="./assets/B3Icon2.png">
+        <img id="B4" src="./assets/B4Icon2.png">
+        <img id="B5" src="./assets/B5Icon.png">
+        <img id="B6" src="./assets/B6Icon.png">
+
+        <img id="B1GG" src="./assets/GreenGradient.png">
+        <img id="B2GG" src="./assets/GreenGradient.png">
+        <img id="B3GG" src="./assets/GreenGradient.png">
+        <img id="B4GG" src="./assets/GreenGradient.png">
+        <img id="B5GG" src="./assets/GreenGradient.png">
+        <img id="B6GG" src="./assets/GreenGradient.png">
+
+        <img id="B1RG" src="./assets/RedGradient.png">
+        <img id="B2RG" src="./assets/RedGradient.png">
+        <img id="B3RG" src="./assets/RedGradient.png">
+        <img id="B4RG" src="./assets/RedGradient.png">
+        <img id="B5RG" src="./assets/RedGradient.png">
+        <img id="B6RG" src="./assets/RedGradient.png">
+
+        <img id="B1Text" src="./assets/B1Text2.png">
+        <img id="B2Text" src="./assets/B2Text.png">
+        <img id="B3Text" src="./assets/B3Text2.png">
+        <img id="B4Text" src="./assets/B4Text2.png">
+        <img id="B5Text" src="./assets/B5Text.png">
+        <img id="B6Text" src="./assets/B6Text.png">
+
+        <img id="AnimSeq1" src="./assets/AnimSequence/Anim1.png">
+        <img id="AnimSeq2" src="./assets/AnimSequence/Anim2.png">
+        <img id="AnimSeq3" src="./assets/AnimSequence/Anim3.png">
+        <img id="AnimSeq4" src="./assets/AnimSequence/Anim4.png">
+        <img id="AnimSeq5" src="./assets/AnimSequence/Anim5.png">
+        <img id="AnimSeq6" src="./assets/AnimSequence/Anim6.png">
+        <img id="AnimSeq7" src="./assets/AnimSequence/Anim7.png">
+        <img id="AnimSeq8" src="./assets/AnimSequence/Anim8.png">
+        <img id="AnimSeq9" src="./assets/AnimSequence/Anim9.png">
+        <img id="AnimSeq10" src="./assets/AnimSequence/Anim10.png">
+        <img id="AnimSeq11" src="./assets/AnimSequence/Anim11.png">
+        <img id="AnimSeq12" src="./assets/AnimSequence/Anim12.png">
+        <img id="AnimSeq13" src="./assets/AnimSequence/Anim13.png">
+        <img id="AnimSeq14" src="./assets/AnimSequence/Anim14.png">
+        <img id="AnimSeq15" src="./assets/AnimSequence/Anim15.png">
+        <img id="AnimSeq16" src="./assets/AnimSequence/Anim16.png">
+        <img id="AnimSeq17" src="./assets/AnimSequence/Anim17.png">
+        <img id="AnimSeq18" src="./assets/AnimSequence/Anim18.png">
+        <img id="AnimSeq19" src="./assets/AnimSequence/Anim19.png">
+        <img id="AnimSeq20" src="./assets/AnimSequence/Anim20.png">
+        <img id="AnimSeq21" src="./assets/AnimSequence/Anim21.png">
+        <img id="AnimSeq22" src="./assets/AnimSequence/Anim22.png">
+        <img id="AnimSeq23" src="./assets/AnimSequence/Anim23.png">
+        <img id="AnimSeq24" src="./assets/AnimSequence/Anim24.png">
+        <img id="AnimSeq25" src="./assets/AnimSequence/Anim25.png">
+        <img id="AnimSeq26" src="./assets/AnimSequence/Anim26.png">
+        <img id="AnimSeq27" src="./assets/AnimSequence/Anim27.png">
+        <img id="AnimSeq28" src="./assets/AnimSequence/Anim28.png">
+        <img id="AnimSeq29" src="./assets/AnimSequence/Anim29.png">
+        <img id="AnimSeq30" src="./assets/AnimSequence/Anim30.png">
+        <img id="AnimSeq31" src="./assets/AnimSequence/Anim31.png">
+        <img id="AnimSeq32" src="./assets/AnimSequence/Anim32.png">
+        <img id="AnimSeq33" src="./assets/AnimSequence/Anim33.png">
+        <img id="AnimSeq34" src="./assets/AnimSequence/Anim34.png">
+        <img id="AnimSeq35" src="./assets/AnimSequence/Anim35.png">
+        <img id="AnimSeq36" src="./assets/AnimSequence/Anim36.png">
+        <img id="AnimSeq37" src="./assets/AnimSequence/Anim37.png">
+        <img id="AnimSeq38" src="./assets/AnimSequence/Anim38.png">
+        <img id="AnimSeq39" src="./assets/AnimSequence/Anim39.png">
+        <img id="AnimSeq40" src="./assets/AnimSequence/Anim40.png">
+        <img id="AnimSeq41" src="./assets/AnimSequence/Anim41.png">
+        <img id="AnimSeq42" src="./assets/AnimSequence/Anim42.png">
+        <img id="AnimSeq43" src="./assets/AnimSequence/Anim43.png">
+        <img id="AnimSeq44" src="./assets/AnimSequence/Anim44.png">
+        <img id="AnimSeq45" src="./assets/AnimSequence/Anim45.png">
+        <img id="AnimSeq46" src="./assets/AnimSequence/Anim46.png">
+        <img id="AnimSeq47" src="./assets/AnimSequence/Anim47.png">
+        <img id="AnimSeq48" src="./assets/AnimSequence/Anim48.png">
+        <img id="AnimSeq49" src="./assets/AnimSequence/Anim49.png">
+        <img id="AnimSeq50" src="./assets/AnimSequence/Anim50.png">
+        <img id="AnimSeq51" src="./assets/AnimSequence/Anim51.png">
+        <img id="AnimSeq52" src="./assets/AnimSequence/Anim52.png">
+        <img id="AnimSeq53" src="./assets/AnimSequence/Anim53.png">
+        <img id="AnimSeq54" src="./assets/AnimSequence/Anim54.png">
+        <img id="AnimSeq55" src="./assets/AnimSequence/Anim55.png">
+        <img id="AnimSeq56" src="./assets/AnimSequence/Anim56.png">
+        <img id="AnimSeq57" src="./assets/AnimSequence/Anim57.png">
+        <img id="AnimSeq58" src="./assets/AnimSequence/Anim58.png">
+        <img id="AnimSeq59" src="./assets/AnimSequence/Anim59.png">
+        <img id="AnimSeq60" src="./assets/AnimSequence/Anim60.png">
+        <img id="AnimSeq61" src="./assets/AnimSequence/Anim61.png">
+        <img id="AnimSeq62" src="./assets/AnimSequence/Anim62.png">
+        <img id="AnimSeq63" src="./assets/AnimSequence/Anim63.png">
+        <img id="AnimSeq64" src="./assets/AnimSequence/Anim64.png">
+        <img id="AnimSeq65" src="./assets/AnimSequence/Anim65.png">
+        <img id="AnimSeq66" src="./assets/AnimSequence/Anim66.png">
+        <img id="AnimSeq67" src="./assets/AnimSequence/Anim67.png">
+        <img id="AnimSeq68" src="./assets/AnimSequence/Anim68.png">
+        <img id="AnimSeq69" src="./assets/AnimSequence/Anim69.png">
+        <img id="AnimSeq70" src="./assets/AnimSequence/Anim70.png">
+        <img id="AnimSeq71" src="./assets/AnimSequence/Anim71.png">
+        <img id="AnimSeq72" src="./assets/AnimSequence/Anim72.png">
+        <img id="AnimSeq73" src="./assets/AnimSequence/Anim73.png">
+        
+        <img id="Flight1" src="./assets/Flight/Flight1.png">
+        <img id="Flight2" src="./assets/Flight/Flight2.png">
+        <img id="Flight3" src="./assets/Flight/Flight3.png">
+        <img id="Flight4" src="./assets/Flight/Flight4.png">
+        <img id="Flight5" src="./assets/Flight/Flight5.png">
+        <img id="Flight6" src="./assets/Flight/Flight6.png">
+        <img id="Flight7" src="./assets/Flight/Flight7.png">
+        <img id="Flight8" src="./assets/Flight/Flight8.png">
+        <img id="Flight9" src="./assets/Flight/Flight9.png">
+        <img id="Flight10" src="./assets/Flight/Flight10.png">
+        <img id="Flight11" src="./assets/Flight/Flight11.png">
+        <img id="Flight12" src="./assets/Flight/Flight12.png">
+        <img id="Flight13" src="./assets/Flight/Flight13.png">
+        <img id="Flight14" src="./assets/Flight/Flight14.png">
+        <img id="Flight15" src="./assets/Flight/Flight15.png">
+        <img id="Flight16" src="./assets/Flight/Flight16.png">
+        <img id="Flight17" src="./assets/Flight/Flight17.png">
+        <img id="Flight18" src="./assets/Flight/Flight18.png">
+        <img id="Flight19" src="./assets/Flight/Flight19.png">
+        <img id="Flight20" src="./assets/Flight/Flight20.png">
+        <img id="Flight21" src="./assets/Flight/Flight21.png">
+        <img id="Flight22" src="./assets/Flight/Flight22.png">
+        <img id="Flight23" src="./assets/Flight/Flight23.png">
+        <img id="Flight24" src="./assets/Flight/Flight24.png">
+        <img id="Flight25" src="./assets/Flight/Flight25.png">
+        <img id="Flight26" src="./assets/Flight/Flight26.png">
+        <img id="Flight27" src="./assets/Flight/Flight27.png">
+        <img id="Flight28" src="./assets/Flight/Flight28.png">
+        <img id="Flight29" src="./assets/Flight/Flight29.png">
+        <img id="Flight30" src="./assets/Flight/Flight30.png">
+        <img id="Flight31" src="./assets/Flight/Flight31.png">
+        <img id="Flight32" src="./assets/Flight/Flight32.png">
+        <img id="Flight33" src="./assets/Flight/Flight33.png">
+        <img id="Flight34" src="./assets/Flight/Flight34.png">
+        <img id="Flight35" src="./assets/Flight/Flight35.png">
+        <img id="Flight36" src="./assets/Flight/Flight36.png">
+        <img id="Flight37" src="./assets/Flight/Flight37.png">
+        <img id="Flight38" src="./assets/Flight/Flight38.png">
+        <img id="Flight39" src="./assets/Flight/Flight39.png">
+
+      </a-assets>
+
+      <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: ${customFields.libVersion}; objects: .clickable"></a-camera>
+
+
+      <a-entity id="aentity" mytarget mindar-image-target="targetIndex: 0" class="clickable">
+
+        <a-plane id="bgImagePlane" src="#bgimage" material="transparent: true; opacity: 0" position="0 0 0" height="2" width="2" rotation="0 0 0"
+          animation="property: opacity; from: 0.0; to: 1.0; loop: false; dur: 2000; autoplay: false; startEvents: bganimstart"></a-plane>
+        <a-plane id="ccImageBlackPlane" src="#ccimageBlack" visible="true" click-detector material="transparent: true; shader: flat;" position="0 0 0.005" height="2.1" width="2.1" rotation="0 0 0"></a-plane>
+        <a-plane id="ccimageGradientPlane" src="#ccimageGradient" visible="true" click-detector material="transparent: true; shader: flat;" position="0 0 0.005" height="2.1" width="2.1" rotation="0 0 0"></a-plane>
+        
+        <!-- <a-plane id="ccimageAnimationPlane" src="#ccimageAnimation" visible="true" click-detector material="transparent: true" position="0 0 0" height="2" width="2" rotation="0 0 0"></a-plane> -->
+        
+        <!-- Benefits Dots Plane -->
+        <a-plane id="B0Plane" visible="false" src="#B0" material="transparent: true; shader: flat; alphaTest: 0.1;" 
+                 position="0 0.01 0.01" height="1.5" width="1.5" rotation="0 0 0" opacity="0"
+                 animation="property: opacity; from: 0.0; to: 1.0; loop: false; dur: 200; autoplay: false; startEvents: scaleAnimStart"></a-plane>
+
+        <!-- Green Gradients -->
+        <!-- <a-plane id="B1GGPlane" visible="false" src="#B1GG" material="transparent: true; shader: flat;" 
+                 position="0 0 0.01" height="2.3" width="2.3" rotation="0 0 0" scale="1 1 1" opacity="0"
+                 animation="property: opacity; from: 0.0; to: 1.0; loop: false; dur: 200; autoplay: false; startEvents: scaleAnimStart"></a-plane> -->
+        <a-plane id="B1GGPlane" visible="false" src="#B1GG" material="transparent: true; shader: flat; depthTest: false"
+                 position="-0.46 0.605 0.01" height="0.8" width="0.8" rotation="0 0 0" scale="1 1 1" opacity="0"
+                 animation="property: opacity; from: 0.0; to: 1.0; loop: false; dur: 800; autoplay: false; easing: easeOutElastic; startEvents: scaleAnimStart"></a-plane>
+        <a-plane id="B2GGPlane" visible="false" src="#B2GG" material="transparent: true; shader: flat; depthTest: false" 
+                 position="0 0.745 0.0102" height="0.8" width="0.8" rotation="0 0 0" scale="1 1 1" opacity="0"
+                 animation="property: opacity; from: 0.0; to: 1.0; loop: false; dur: 800; autoplay: false; easing: easeOutElastic; startEvents: scaleAnimStart"></a-plane>
+        <a-plane id="B3GGPlane" visible="false" src="#B3GG" material="transparent: true; shader: flat; depthTest: false" 
+                 position="0.49 0.585 0.0104" height="0.8" width="0.8" rotation="0 0 0" scale="1 1 1" opacity="0"
+                 animation="property: opacity; from: 0.0; to: 1.0; loop: false; dur: 800; autoplay: false; easing: easeOutElastic; startEvents: scaleAnimStart"></a-plane>
+        <a-plane id="B4GGPlane" visible="false" src="#B4GG" material="transparent: true; shader: flat; depthTest: false" 
+                 position="-0.45 -0.58 0.0106" height="0.8" width="0.8" rotation="0 0 0" scale="1 1 1" opacity="0"
+                 animation="property: opacity; from: 0.0; to: 1.0; loop: false; dur: 800; autoplay: false; easing: easeOutElastic; startEvents: scaleAnimStart"></a-plane>
+        <a-plane id="B5GGPlane" visible="false" src="#B5GG" material="transparent: true; shader: flat; depthTest: false" 
+                 position="0.01 -0.755 0.0108" height="0.8" width="0.8" rotation="0 0 0" scale="1 1 1" opacity="0"
+                 animation="property: opacity; from: 0.0; to: 1.0; loop: false; dur: 800; autoplay: false; easing: easeOutElastic; startEvents: scaleAnimStart"></a-plane>
+        <a-plane id="B6GGPlane" visible="false" src="#B6GG" material="transparent: true; shader: flat; depthTest: false" 
+                 position="0.5 -0.56 0.0109" height="0.8" width="0.8" rotation="0 0 0" scale="1 1 1" opacity="0"
+                 animation="property: opacity; from: 0.0; to: 1.0; loop: false; dur: 800; autoplay: false; easing: easeOutElastic; startEvents: scaleAnimStart"></a-plane>
+
+        <!-- Red Gradients -->
+        <a-plane id="B1RGPlane" visible="false" src="#B1RG" material="transparent: true; shader: flat; depthTest: false" 
+                 position="-0.46 0.605 0.01" height="0.8" width="0.8" rotation="0 0 0"></a-plane>
+        <a-plane id="B2RGPlane" visible="false" src="#B2RG" material="transparent: true; shader: flat; depthTest: false" 
+                 position="0 0.745 0.0102" height="0.8" width="0.8" rotation="0 0 0"></a-plane>
+        <a-plane id="B3RGPlane" visible="false" src="#B3RG" material="transparent: true; shader: flat; depthTest: false" 
+                 position="0.49 0.585 0.0104" height="0.8" width="0.8" rotation="0 0 0"></a-plane>
+        <a-plane id="B4RGPlane" visible="false" src="#B4RG" material="transparent: true; shader: flat; depthTest: false" 
+                 position="-0.45 -0.58 0.0106" height="0.8" width="0.8" rotation="0 0 0"></a-plane>
+        <a-plane id="B5RGPlane" visible="false" src="#B5RG" material="transparent: true; shader: flat; depthTest: false" 
+                 position="0.01 -0.755 0.0108" height="0.8" width="0.8" rotation="0 0 0"></a-plane>
+        <a-plane id="B6RGPlane" visible="false" src="#B6RG" material="transparent: true; shader: flat; depthTest: false" 
+                 position="0.5 -0.56 0.0109" height="0.8" width="0.8" rotation="0 0 0"></a-plane>
+
+        <!-- Animation Planes -->
+        <a-plane id="B5AnimPlane" visible="false" src="#Flight1" material="transparent: true; alphaTest: 0.1; shader: flat;"
+                 position="0.022 0.022 0.014" height="1.6875" width="3" rotation="0 0 0"></a-plane>
+
+        <!-- Text Planes -->
+        <a-plane id="B1TextPlane" visible="false" src="#B1Text" material="transparent: true; alphaTest: 0.1; shader: flat;"
+                 position="0 0 0.012" height="2" width="2" rotation="0 0 0"></a-plane>
+        <a-plane id="B2TextPlane" visible="false" src="#B2Text" material="transparent: true; alphaTest: 0.1; shader: flat;"
+                 position="0 0 0.012" height="2" width="2" rotation="0 0 0"></a-plane>
+        <a-plane id="B3TextPlane" visible="false" src="#B3Text" material="transparent: true; alphaTest: 0.1; shader: flat;"
+                 position="0 0 0.012" height="2" width="2" rotation="0 0 0"></a-plane>
+        <a-plane id="B4TextPlane" visible="false" src="#B4Text" material="transparent: true; alphaTest: 0.1; shader: flat;"
+                 position="0 0 0.012" height="2" width="2" rotation="0 0 0"></a-plane>
+        <a-plane id="B5TextPlane" visible="false" src="#B5Text" material="transparent: true; alphaTest: 0.1; shader: flat;"
+                 position="0 0 0.012" height="2" width="2" rotation="0 0 0" opacity="0"
+                 animation="property: opacity; from: 0.0; to: 1.0; loop: false; dur: 1000; autoplay: false; easing: easeInOutQuad; startEvents: animTextOpacity"></a-plane>
+        <a-plane id="B6TextPlane" visible="false" src="#B6Text" material="transparent: true; alphaTest: 0.1; shader: flat;"
+                 position="0 0 0.012" height="2" width="2" rotation="0 0 0"></a-plane>
+           
+        <!-- Benefits Icons Planes -->
+        <a-plane id="B1Plane" visible="false" src="#B1" material="transparent: true; shader: flat;" class="clickable"
+                 position="-0.46 0.58 0.011" height="0.3" width="0.3" rotation="0 0 0" scale="0 0 0"
+                 animation="property: scale; from: 0 0 0; to: 1 1 1; loop: false; dur: 800; autoplay: false; easing: easeOutElastic; startEvents: scaleAnimStart"></a-plane>
+        <a-plane id="B2Plane" visible="false" src="#B2" material="transparent: true; shader: flat;" class="clickable"
+                 position="0 0.72 0.011" height="0.3" width="0.25" rotation="0 0 0" scale="0 0 0"
+                 animation="property: scale; from: 0 0 0; to: 1 1 1; loop: false; dur: 800; autoplay: false; easing: easeOutElastic; startEvents: scaleAnimStart"></a-plane>
+        <a-plane id="B3Plane" visible="false" src="#B3" material="transparent: true; shader: flat;" class="clickable"
+                 position="0.49 0.56 0.011" height="0.3" width="0.31" rotation="0 0 0" scale="0 0 0"
+                 animation="property: scale; from: 0 0 0; to: 1 1 1; loop: false; dur: 800; autoplay: false; easing: easeOutElastic; startEvents: scaleAnimStart"></a-plane>
+        <a-plane id="B4Plane" visible="false" src="#B4" material="transparent: true; shader: flat;" class="clickable" 
+                 position="-0.45 -0.61 0.011" height="0.31" width="0.25" rotation="0 0 0" scale="0 0 0"
+                 animation="property: scale; from: 0 0 0; to: 1 1 1; loop: false; dur: 800; autoplay: false; easing: easeOutElastic; startEvents: scaleAnimStart"></a-plane>
+        <a-plane id="B5Plane" visible="false" src="#B5" material="transparent: true; shader: flat;" class="clickable"
+                 position="0.01 -0.79 0.011" height="0.37" width="0.28" rotation="0 0 0" scale="0 0 0"
+                 animation="property: scale; from: 0 0 0; to: 1 1 1; loop: false; dur: 800; autoplay: false; easing: easeOutElastic; startEvents: scaleAnimStart"></a-plane>
+        <a-plane id="B6Plane" visible="false" src="#B6" material="transparent: true; shader: flat;" class="clickable"
+                 position="0.5 -0.59 0.011" height="0.32" width="0.25" rotation="0 0 0" scale="0 0 0"
+                 animation="property: scale; from: 0 0 0; to: 1 1 1; loop: false; dur: 800; autoplay: false; easing: easeOutElastic; startEvents: scaleAnimStart"></a-plane>
+
+        <a-plane id="animSeqPlane" src="#AnimSeq1" visible="false" material="shader: flat; transparent: true; alphaTest: 0.1;" 
+          position="0.23 -0.015 0.02" scale="3.9975 2.25 1" rotation="0 0 -1"
+          animation="property: scale; from: 2.665 1.5 1; to: 3.9975 2.25 1; loop: false; dur: 3000; easing: easeInOutQuad; autoplay: false; startEvents: bringItUp"
+          animation__2="property: scale; from: 3.9975 2.25 1; to: 2.665 1.5 1; loop: false; dur: 3000; easing: easeInOutQuad; autoplay: false; startEvents: bringItDown"
+          animation__3="property: position; from: 0.23 -0.015 0.4; to: 0.23 -0.015 0.01; loop: false; dur: 3000; easing: easeInOutQuad; autoplay: false; startEvents: bringItDown2"
+        ></a-plane>
+
+        <a-plane id="cardGraphicPlane" src="#cardGraphic" visible="false" click-detector material="transparent: true; alphaTest: 0.1;" position="0 0 0.015" height="2.1" width="2.1" rotation="0 0 0"></a-plane>
+        <a-plane id="ccimageNameChipPlane" src="#ccimageNameChip" visible="true" click-detector material="transparent: true; alphaTest: 0.1;" position="0 0 0.015" height="2.1" width="2.1" rotation="0 0 0"></a-plane>
+
+      </a-entity>
+    </a-scene>
+
+  </div>
+
+  <script>
+    ; (function () {
+      var src = 'https://cdnjs.cloudflare.com/ajax/libs/eruda/2.4.1/eruda.min.js';
+      if (!/eruda=true/.test(window.location) && localStorage.getItem('active-eruda') != 'true') return;
+      document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+      document.write('<scr' + 'ipt>eruda.init();</scr' + 'ipt>');
+    })();
+
+    function pageLoaded() {
+      console.log('Page Loaded')
+      document.getElementById('Language1').className = "LangAppear1"
+      setTimeout(function() {
+        document.getElementById('Language2').style.visibility = "visible"
+        document.getElementById('Language2').className = "LangAppear2"
+      },300)
+      setTimeout(function() {
+        document.getElementById('Language3').style.visibility = "visible"
+        document.getElementById('Language3').className = "LangAppear3"
+      },600)
+    }
+
+    const sceneEl = document.querySelector('a-scene');
+    let arSystem;
+    sceneEl.addEventListener('loaded', function () {
+      arSystem = sceneEl.systems["mindar-image-system"];
+      console.log('Loaded')
+    });
+
+    function startAR() {
+      arSystem.start();
+      document.getElementById('SplashScreenBG').style.visibility = 'hidden'
+      document.getElementById('Language1').style.visibility = 'hidden'
+      document.getElementById('Language2').style.visibility = 'hidden'
+      document.getElementById('Language3').style.visibility = 'hidden'
+      document.getElementById('splashScreenLogo').style.visibility = 'hidden'
+      document.getElementById('splashScreenCard').style.visibility = 'hidden'
+    }
+
+    if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
+      console.log("Permissions Granted")
+    }
+
+    var constraints = {
+      video: true,
+      audio: false
+    }
+
+    function hideAllTextPlanes() {
+      document.getElementById('B1TextPlane').setAttribute('visible', false)
+      document.getElementById('B2TextPlane').setAttribute('visible', false)
+      document.getElementById('B3TextPlane').setAttribute('visible', false)
+      document.getElementById('B4TextPlane').setAttribute('visible', false)
+      document.getElementById('B5TextPlane').setAttribute('visible', false)
+      document.getElementById('B6TextPlane').setAttribute('visible', false)
+      document.getElementById('animSeqPlane').setAttribute('visible', false)
+
+      document.getElementById('cardGraphicPlane').setAttribute('visible', false)
+      document.getElementById('ccimageGradientPlane').setAttribute('visible', true)
+      document.getElementById('ccimageNameChipPlane').setAttribute('visible', false)
+      document.getElementById('ccImageBlackPlane').setAttribute('visible', true)
+    }
+
+    function turnGreenGradientsVisible() {
+      document.getElementById('B1RGPlane').setAttribute('visible', false)
+      document.getElementById('B2RGPlane').setAttribute('visible', false)
+      document.getElementById('B3RGPlane').setAttribute('visible', false)
+      document.getElementById('B4RGPlane').setAttribute('visible', false)
+      document.getElementById('B5RGPlane').setAttribute('visible', false)
+      document.getElementById('B6RGPlane').setAttribute('visible', false)
+
+      document.getElementById('B1GGPlane').setAttribute('visible', true)
+      document.getElementById('B2GGPlane').setAttribute('visible', true)
+      document.getElementById('B3GGPlane').setAttribute('visible', true)
+      document.getElementById('B4GGPlane').setAttribute('visible', true)
+      document.getElementById('B5GGPlane').setAttribute('visible', true)
+      document.getElementById('B6GGPlane').setAttribute('visible', true)
+    }
+
+    var b5seq;
+    var b5count = 0;
+    function playB5AnimSeq() {
+      if (b5count > 38) {
+        clearInterval(b5seq)
+      } else {
+        b5count++;
+        document.getElementById('B5AnimPlane').setAttribute("src","#Flight" + b5count + "");
+        console.log('Animating ' + b5count + ' frame')
+      }
+    }
+    function stopB5AnimSeq() {
+      b5count = 0;
+      clearTimeout(b5seq);
+    }
+
+    // BENEFITS CLICK DETECTION START
+    document.getElementById('B1Plane').addEventListener("click", event => {
+      console.log('B1 Tapped')
+      hideAllTextPlanes()
+      document.getElementById('B1TextPlane').setAttribute('visible', true)
+      turnGreenGradientsVisible()
+      document.getElementById('B1GGPlane').setAttribute('visible', false)
+      document.getElementById('B1RGPlane').setAttribute('visible', true)
+    })
+    document.getElementById('B2Plane').addEventListener("click", event => {
+      console.log('B2 Tapped')
+      hideAllTextPlanes()
+      document.getElementById('B2TextPlane').setAttribute('visible', true)
+      turnGreenGradientsVisible()
+      document.getElementById('B2GGPlane').setAttribute('visible', false)
+      document.getElementById('B2RGPlane').setAttribute('visible', true)
+    })
+    document.getElementById('B3Plane').addEventListener("click", event => {
+      console.log('B3 Tapped')
+      hideAllTextPlanes()
+      document.getElementById('B3TextPlane').setAttribute('visible', true)
+      turnGreenGradientsVisible()
+      document.getElementById('B3GGPlane').setAttribute('visible', false)
+      document.getElementById('B3RGPlane').setAttribute('visible', true)
+    })
+    document.getElementById('B4Plane').addEventListener("click", event => {
+      console.log('B4 Tapped')
+      hideAllTextPlanes()
+      document.getElementById('B4TextPlane').setAttribute('visible', true)
+      turnGreenGradientsVisible()
+      document.getElementById('B4GGPlane').setAttribute('visible', false)
+      document.getElementById('B4RGPlane').setAttribute('visible', true)
+    })
+    document.getElementById('B5Plane').addEventListener("click", event => {
+      console.log('B5 Tapped')
+      hideAllTextPlanes()
+
+      stopB5AnimSeq();
+      document.getElementById('B5AnimPlane').setAttribute('visible', true)
+      b5seq = setInterval(playB5AnimSeq, 60);
+      document.getElementById('B5TextPlane').setAttribute('opacity', 0)
+
+      setTimeout(function() {
+        document.getElementById('B5TextPlane').setAttribute('visible', true)
+        document.getElementById('B5TextPlane').emit('animTextOpacity')
+      },2000)
+      turnGreenGradientsVisible()
+      document.getElementById('B5GGPlane').setAttribute('visible', false)
+      document.getElementById('B5RGPlane').setAttribute('visible', true)
+    })
+    document.getElementById('B6Plane').addEventListener("click", event => {
+      console.log('B6 Tapped')
+      hideAllTextPlanes()
+      document.getElementById('B6TextPlane').setAttribute('visible', true)
+      turnGreenGradientsVisible()
+      document.getElementById('B6GGPlane').setAttribute('visible', false)
+      document.getElementById('B6RGPlane').setAttribute('visible', true)
+    })
+    // BENEFITS CLICK DETECTION START
+
+
+    setInterval(function() {
+      navigator.permissions.query({ name: 'camera' }).then(function (result) {
+        // alert(result.state);
+        if (result.state === 'granted') {
+          //permission has already been granted, no prompt is shown
+        } else if (result.state === 'prompt') {
+          //there's no peristent permission registered, will be showing the prompt
+        } else if (result.state === 'denied') {
+        //permission has been denied
+        window.navigator.mediaDevices.getUserMedia(constraints)
+        .then((stream) => {
+            console.log('Camera Access Permitted')
+          })
+          .catch((err) => {
+            console.log('Camera Access Denied')
+            document.getElementById('cameraNotPermitted').style.visibility = 'visible'
+            setTimeout(function () {
+              window.location.reload();
+            }, 5000)
+          });
+        }
+      });
+    },1000)
+      
+
+    sceneEl.addEventListener("arReady", (event) => {
+      console.log("MindAR is ready")
+      document.getElementById('logo').style.visibility = 'visible'
+    });
+
+    function activateCardIcon1() {
+      console.log("Redirect")
+      window.location.href = "https://www.rakbank.ae/en/islamic/personal/cards/credit-cards/watani-credit-card";
+    }
+    function refreshPage() {
+      console.log("Refresh")
+      window.location.reload();
+    }
+    function informationCard() {
+      console.log("informationCard")
+      document.getElementById('privacyPolicy').style.visibility = 'visible'
+    }
+    function hideInformationCard() {
+      console.log("informationCard")
+      document.getElementById('privacyPolicy').style.visibility = 'hidden'
+    }
+
+    var timer;
+    var count = 0;
+
+    function playAnimSeq() {
+      if (count > 72) {
+        makeTextVisible()
+        clearInterval(timer)
+      } else {
+        count++;
+        document.getElementById('animSeqPlane').setAttribute("src","#AnimSeq" + count + "");
+        // console.log('Animating ' + count + ' frame')
+      }
+    }
+
+    function StopAnimation() {
+      count = 0;
+      clearTimeout(timer);
+    }
+
+    var animateBgGradient = (function() {
+      var executed = false;
+      return function() {
+        if (!executed) {
+          executed = true;
+          document.getElementById('BgAudio').play()
+          setTimeout(function() {
+
+            document.getElementById('bgImagePlane').emit('bganimstart')
+            setTimeout(function () {
+              // document.getElementById('cardGraphicPlane').setAttribute('visible', false)
+              document.getElementById('animSeqPlane').setAttribute('visible', true)
+              // document.getElementById('animSeqPlane').emit('bringItUp')
+              timer = setInterval(playAnimSeq, 45);
+            }, 2400)
+            setTimeout(function () {
+              document.getElementById('animSeqPlane').emit('bringItDown')
+              // document.getElementById('animSeqPlane').emit('bringItDown2')
+            }, 8000)
+            setTimeout(function () {
+              document.getElementById('cardGraphicPlane').setAttribute('visible', true)
+              document.getElementById('animSeqPlane').setAttribute('visible', false)
+            }, 11000)
+
+          },1200)
+        }
+      };
+    })();
+
+    var makeTextVisible = (function() {
+      var executed = false;
+      return function() {
+        if (!executed) {
+          executed = true;
+          document.getElementById('Text1').style.visibility = "visible"
+          document.getElementById('Text2').style.visibility = "visible"
+        }
+      };
+    })();
+
+    var initOptionsScreen = (function() {
+      var executed = false;
+      return function() {
+        if (!executed) {
+          executed = true;
+          document.getElementById('Text1').style.visibility = "hidden"
+          document.getElementById('Text2').style.visibility = "hidden"
+          document.getElementById('informationIcon').style.visibility = "visible"
+          document.getElementById('informationIcon').className = "infoAppear"
+          
+          setTimeout(function () {
+            document.getElementById('reloadIcon').style.visibility = "visible"
+            document.getElementById('reloadIcon').className = "reloadAppear"
+          }, 300)
+          
+          document.getElementById('checkYourBenefitsIcon').style.visibility = "visible"
+          document.getElementById('checkYourBenefitsIcon').className = "animationAppear2"
+          setTimeout(function () {
+            document.getElementById('activateCardIcon1').style.visibility = "visible"
+            document.getElementById('activateCardIcon1').className = "animationAppear1"
+          }, 300)
+
+        }
+      };
+    })();
+
+
+    var initCheckOurBenefits = (function() {
+      var executed = false;
+      return function() {
+        if (!executed) {
+          executed = true;
+          document.getElementById('activateCardIcon1').style.visibility = "hidden"
+          document.getElementById('checkYourBenefitsIcon').style.visibility = "hidden"
+
+          document.getElementById('activateYourCardIcon').style.visibility = "visible"
+          document.getElementById('applyNowIcon').style.visibility = "visible"
+
+          document.getElementById('benefitsIcon').style.visibility = "visible"
+          document.getElementById('benefitsIcon').className = "benefitsAppear"
+          
+          // turnGreenGradientsVisible()
+
+          setTimeout(function () {
+            document.getElementById('B1Plane').setAttribute('visible', true)
+            document.getElementById('B1Plane').emit('scaleAnimStart')
+            document.getElementById('B1GGPlane').setAttribute('visible', true)
+            document.getElementById('B1GGPlane').emit('scaleAnimStart')
+            setTimeout(function () {
+              document.getElementById('B2Plane').setAttribute('visible', true)
+              document.getElementById('B2Plane').emit('scaleAnimStart')
+              document.getElementById('B2GGPlane').setAttribute('visible', true)
+              document.getElementById('B2GGPlane').emit('scaleAnimStart')
+              setTimeout(function () {
+                document.getElementById('B3Plane').setAttribute('visible', true)
+                document.getElementById('B3Plane').emit('scaleAnimStart')
+                document.getElementById('B3GGPlane').setAttribute('visible', true)
+                document.getElementById('B3GGPlane').emit('scaleAnimStart')
+                setTimeout(function () {
+                  document.getElementById('B6Plane').setAttribute('visible', true)
+                  document.getElementById('B6Plane').emit('scaleAnimStart')
+                  document.getElementById('B6GGPlane').setAttribute('visible', true)
+                  document.getElementById('B6GGPlane').emit('scaleAnimStart')
+                  setTimeout(function () {
+                    document.getElementById('B5Plane').setAttribute('visible', true)
+                    document.getElementById('B5Plane').emit('scaleAnimStart')
+                    document.getElementById('B5GGPlane').setAttribute('visible', true)
+                    document.getElementById('B5GGPlane').emit('scaleAnimStart')
+                    setTimeout(function () {
+                      document.getElementById('B4Plane').setAttribute('visible', true)
+                      document.getElementById('B4Plane').emit('scaleAnimStart')
+                      document.getElementById('B4GGPlane').setAttribute('visible', true)
+                      document.getElementById('B4GGPlane').emit('scaleAnimStart')
+                      setTimeout(function () {
+                        document.getElementById('B0Plane').setAttribute('visible', true)
+                        document.getElementById('B0Plane').emit('scaleAnimStart')
+                      }, 1000)
+                    }, 1000)
+                  }, 1000)
+                }, 1000)
+              }, 1000)
+            }, 1000)
+          }, 300)
+          
+        }
+      };
+    })();
+
+    function checkYourBenefitsIcon() {
+      console.log("BenefitsOpen")
+      initCheckOurBenefits()
+    }
+
+
+    AFRAME.registerComponent('mytarget', {
+      init: function () {
+        this.el.addEventListener('targetFound', event => {
+          console.log("target found");
+
+          document.getElementById('example-scanning-overlay').style.display = 'none'
+          document.getElementById('scanText').style.display = 'none'
+          document.getElementById('logo').style.visibility = "hidden"
+          
+          animateBgGradient()
+          
+          // setTimeout(function () {
+          //   video1.play()
+          // }, 2000)
+          
+          setTimeout(function () {
+            initOptionsScreen()
+          }, 12300)
+        });
+        this.el.addEventListener('targetLost', event => {
+          console.log("target lost");
+          document.getElementById('example-scanning-overlay').style.display = 'flex'
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>
