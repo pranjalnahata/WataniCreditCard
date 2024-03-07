@@ -403,6 +403,7 @@
     <div id="example-scanning-overlay" class="hidden">
       <div class="inner">
         <h3 id="scanText">Scan your Watani card to get started</h3>
+        <!-- <h3 id="ar-scanText">امسح بطاقة وطني الخاصة بك للبدء</h3> -->
         <img src="./assets/CreditCard.png" />
         <div class="scanline"></div>
       </div>
@@ -414,7 +415,7 @@
     <img id="splashScreenLogo" src="./assets/LogoWhite.png" />
     <img id="splashScreenCard" src="./assets/SplashScreenCard.png" />
     <img id="Language1" src="./assets/Language1.png" />
-    <img id="Language2" src="./assets/Language2.png" onclick="startAR()"/>
+    <img id="Language2" src="./assets/Language2.png" onclick="arabicText()"/>
     <img id="Language3" src="./assets/Language3.png" onclick="startAR()"/>
 
     <img id="logo" src="./assets/RAKIslamic-Logo.png" />
@@ -1001,6 +1002,35 @@
       arSystem = sceneEl.systems["mindar-image-system"];
       console.log('Loaded')
     });
+
+    function arabicText() {
+      startAR()
+      console.log("Arabic")
+      document.getElementById('scanText').innerText = "امسح بطاقة وطني الخاصة بك للبدء"
+      document.getElementById('Text1').src = "./assets/WataniCreditCardTextAr.png"
+      document.getElementById('Text1').style.width = '85%'
+      document.getElementById('Text2').src="./assets/PerfectlyEmiratiAr.png"
+      document.getElementById('Text2').style.width = '75%'
+      document.getElementById('checkYourBenefitsIcon').src = "./assets/CheckOutBenefitsIconAr.png"
+      document.getElementById('activateCardIcon1').src = "./assets/ActivateYourCardIconAr.png"
+      document.getElementById('applyNowIcon').src = "./assets/ApplyNowBtnAr.png"
+      document.getElementById('activateYourCardIcon').src = "./assets/ActivateYourCardIconAr.png"
+      document.getElementById('benefitsIcon').src = "./assets/BenefitsIcon1Ar.png"
+      
+      document.getElementById('B1').src = "./assets/B1IconAr.png"
+      document.getElementById('B2').src = "./assets/B2IconAr.png"
+      document.getElementById('B3').src = "./assets/B3Icon2Ar.png"
+      document.getElementById('B4').src = "./assets/B4Icon2Ar.png"
+      document.getElementById('B5').src = "./assets/B5IconAr.png"
+      document.getElementById('B6').src = "./assets/B6IconAr.png"
+      document.getElementById('B1Text').src = "./assets/B1TextAr.png"
+      document.getElementById('B2Text').src = "./assets/B2TextAr.png"
+      document.getElementById('B3Text').src = "./assets/B3TextAr.png"
+      document.getElementById('B4Text').src = "./assets/B4TextAr.png"
+      document.getElementById('B5Text').src = "./assets/B5TextAr.png"
+      document.getElementById('B6Text').src = "./assets/B6TextAr.png"
+
+    }
 
     function startAR() {
       arSystem.start();
