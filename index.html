@@ -985,6 +985,13 @@
 
     function pageLoaded() {
       console.log('Page Loaded')
+      document.getElementById('informationIcon').style.visibility = "visible"
+      document.getElementById('informationIcon').className = "infoAppear"
+      
+      setTimeout(function () {
+        document.getElementById('reloadIcon').style.visibility = "visible"
+        document.getElementById('reloadIcon').className = "reloadAppear"
+      }, 300)
       document.getElementById('Language1').className = "LangAppear1"
       setTimeout(function() {
         document.getElementById('Language2').style.visibility = "visible"
@@ -1433,13 +1440,6 @@
           executed = true;
           document.getElementById('Text1').style.visibility = "hidden"
           document.getElementById('Text2').style.visibility = "hidden"
-          document.getElementById('informationIcon').style.visibility = "visible"
-          document.getElementById('informationIcon').className = "infoAppear"
-          
-          setTimeout(function () {
-            document.getElementById('reloadIcon').style.visibility = "visible"
-            document.getElementById('reloadIcon').className = "reloadAppear"
-          }, 300)
           
           document.getElementById('checkYourBenefitsIcon').style.visibility = "visible"
           document.getElementById('checkYourBenefitsIcon').className = "animationAppear2"
