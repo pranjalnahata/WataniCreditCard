@@ -1004,7 +1004,7 @@
     }
 
     const sceneEl = document.querySelector('a-scene');
-    let arSystem;
+    let arSystem; let isArabic = false;
     sceneEl.addEventListener('loaded', function () {
       arSystem = sceneEl.systems["mindar-image-system"];
       console.log('Loaded')
@@ -1013,6 +1013,7 @@
     function arabicText() {
       startAR()
       console.log("Arabic")
+      isArabic = true;
       document.getElementById('scanText').innerText = "امسح بطاقة وطني الخاصة بك للبدء"
       document.getElementById('Text1').src = "./assets/WataniCreditCardTextAr.png"
       document.getElementById('Text1').style.width = '85%'
@@ -1367,7 +1368,13 @@
     }
     function informationCard() {
       console.log("informationCard")
-      document.getElementById('privacyPolicy').style.visibility = 'visible'
+      if (isArabic) {
+        window.open('https://www.rakbank.ae/ar/privacy-policy', '_blank', 'noopener, noreferrer');
+      } else {
+        window.open('https://www.rakbank.ae/en/privacy-policy', '_blank', 'noopener, noreferrer');
+
+      }
+      // document.getElementById('privacyPolicy').style.visibility = 'visible'
     }
     function hideInformationCard() {
       console.log("informationCard")
