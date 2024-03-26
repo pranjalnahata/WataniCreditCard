@@ -436,7 +436,7 @@
 
     <div class="endScreenBtns">
       <img id="activateYourCardIcon" src="./assets/ActivateYourCardIcon.png" onclick="activateCardIcon1()"/>
-      <img id="applyNowIcon" src="./assets/ApplyNowBtn.png" onclick="activateCardIcon1()"/>
+      <img id="applyNowIcon" src="./assets/ApplyNowBtn.png" onclick="applyNow()"/>
     </div>
 
     <img id="benefitsIcon" src="./assets/BenefitsIcon1.png" />
@@ -477,7 +477,7 @@
         <img id="B6RG" src="./assets/RedGradient.png">
 
         <img id="B1Text" src="./assets/B1Text2.png">
-        <img id="B2Text" src="./assets/B2Text.png">
+        <img id="B2Text" src="./assets/B2TextNew.png">
         <img id="B3Text" src="./assets/B3Text2.png">
         <img id="B4Text" src="./assets/B4Text2.png">
         <img id="B5Text" src="./assets/B5Text.png">
@@ -1031,12 +1031,12 @@
       document.getElementById('B4').src = "./assets/B4Icon2Ar.png"
       document.getElementById('B5').src = "./assets/B5IconAr.png"
       document.getElementById('B6').src = "./assets/B6IconAr.png"
-      document.getElementById('B1Text').src = "./assets/B1TextAr.png"
-      document.getElementById('B2Text').src = "./assets/B2TextAr.png"
-      document.getElementById('B3Text').src = "./assets/B3TextAr.png"
-      document.getElementById('B4Text').src = "./assets/B4TextAr.png"
-      document.getElementById('B5Text').src = "./assets/B5TextAr.png"
-      document.getElementById('B6Text').src = "./assets/B6TextAr.png"
+      document.getElementById('B1Text').src = "./assets/B1TextArNew.png"
+      document.getElementById('B2Text').src = "./assets/B2TextArNew.png"
+      document.getElementById('B3Text').src = "./assets/B3TextArNew.png"
+      document.getElementById('B4Text').src = "./assets/B4TextArNew.png"
+      document.getElementById('B5Text').src = "./assets/B5TextArNew.png"
+      document.getElementById('B6Text').src = "./assets/B6TextArNew.png"
 
     }
 
@@ -1360,8 +1360,17 @@
 
     function activateCardIcon1() {
       console.log("Redirect")
-      window.location.href = "https://www.rakbank.ae/en/islamic/personal/cards/credit-cards/watani-credit-card";
+      window.open('https://apps.rakbank.ae/l6OV/ycsahcj3', '_blank', 'noopener, noreferrer');
     }
+
+    function applyNow() {
+      if (isArabic) {
+        window.open('https://www.rakbank.ae/ar/islamic/call-me-back?pageId=127097', '_blank', 'noopener, noreferrer');
+      } else {
+        window.open('https://www.rakbank.ae/en/islamic/call-me-back?pageId=127097', '_blank', 'noopener, noreferrer');
+      }
+    }
+
     function refreshPage() {
       console.log("Refresh")
       window.location.reload();
@@ -1369,9 +1378,9 @@
     function informationCard() {
       console.log("informationCard")
       if (isArabic) {
-        window.open('https://www.rakbank.ae/ar/privacy-policy', '_blank', 'noopener, noreferrer');
+        window.open('https://www.rakbank.ae/globalassets/pdf/rakd004-watanicard-faq-05122023.pdf', '_blank', 'noopener, noreferrer');
       } else {
-        window.open('https://www.rakbank.ae/en/privacy-policy', '_blank', 'noopener, noreferrer');
+        window.open('https://www.rakbank.ae/globalassets/pdf/rakd004-watanicard-faq-05122023.pdf', '_blank', 'noopener, noreferrer');
 
       }
       // document.getElementById('privacyPolicy').style.visibility = 'visible'
