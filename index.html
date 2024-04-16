@@ -122,6 +122,26 @@
         top: 87%
       }
     }
+    
+    .container1 {
+      position: relative;
+    }
+
+    .bottomright {
+      position: absolute;
+      color: white;
+      bottom: 8px;
+      right: 16px;
+      font-size: 15px;
+    }
+
+    .bottomright img {
+      width: 25%;
+      height: auto;
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+    }
 
     .example-container {
       overflow: hidden;
@@ -452,6 +472,12 @@
 
     <img id="logo" src="./assets/RAKIslamic-Logo.png" />
     <img id="cameraNotPermitted" src="./assets/CameraNotPermitted.png" />
+
+    <!-- <h3 id="ppText">Privacy Policy</h3> -->
+    <div class="container1">
+      <!-- <img src="img_5terre_wide.jpg" alt="Cinque Terre" width="1000" height="300"> -->
+      <div class="bottomright" onclick="PrivacyPolicy()"><img src="./assets/PrivacyPolicyText.png"></div>
+    </div>
 
     <audio id="BgAudio">
       <source src="./assets/BG.mp3" type="audio/mp3">
@@ -1040,13 +1066,17 @@
         window.open('https://www.rakbank.ae/globalassets/pdf/rakd004-watanicard-faq-05122023.pdf', '_blank', 'noopener, noreferrer');
       } else {
         window.open('https://www.rakbank.ae/globalassets/pdf/rakd004-watanicard-faq-05122023.pdf', '_blank', 'noopener, noreferrer');
-
+        
       }
       // document.getElementById('privacyPolicy').style.visibility = 'visible'
     }
     function hideInformationCard() {
       console.log("informationCard")
       document.getElementById('privacyPolicy').style.visibility = 'hidden'
+    }
+    
+    function PrivacyPolicy() {
+      window.open('https://www.rakbank.ae/en/privacy-policy', '_blank', 'noopener, noreferrer');
     }
 
     var timer;
