@@ -473,10 +473,9 @@
     <img id="logo" src="./assets/RAKIslamic-Logo.png" />
     <img id="cameraNotPermitted" src="./assets/CameraNotPermitted.png" />
 
-    <!-- <h3 id="ppText">Privacy Policy</h3> -->
     <div class="container1">
       <!-- <img src="img_5terre_wide.jpg" alt="Cinque Terre" width="1000" height="300"> -->
-      <div class="bottomright" onclick="PrivacyPolicy()"><img src="./assets/PrivacyPolicyText.png"></div>
+      <div class="bottomright" id="ppText" onclick="PrivacyPolicy()"><img src="./assets/PrivacyPolicyText.png"></div>
     </div>
 
     <audio id="BgAudio">
@@ -848,6 +847,7 @@
       document.getElementById('Language3').style.visibility = 'hidden'
       document.getElementById('splashScreenLogo').style.visibility = 'hidden'
       document.getElementById('splashScreenCard').style.visibility = 'hidden'
+      document.getElementById('ppText').style.visibility = 'hidden'
     }
 
     if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
